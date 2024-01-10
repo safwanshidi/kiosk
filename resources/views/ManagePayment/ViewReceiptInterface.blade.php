@@ -26,24 +26,24 @@
 			type = 2 view receipt detail by user id
 		*/
 
-		if($type==1)
-		{
-			$action = '/viewRecentReceipt'; 
-		}
-		else if ($type==2)
-		{
-			$action = '/searchReceiptById?uid='.$payment_data->user_id.'&type=uid';     
-		}
-		else
-		{
-			$action = '/staff/bursary/makePayment';
-		}
+			if($type==1)
+			{
+				$action = '/staff/bursary/viewRecentReceipt'; 
+			}
+			else if ($type==2)
+			{
+				$action = '/staff/bursary/searchReceiptById?uid='.$paymentData->user_id.'&type=uid';     
+			}
+			else
+			{
+				$action = '/staff/bursary/makePayment';
+			}
 			
 
 		?>
-			<div class="flex-boxs">
-				<input type="button" onclick="window.location.href = '{{$action}}'" class="btn-light-color" value="Close">
-			</div>
+		<div class="flex-boxs">
+			<input type="button" onclick="window.location.href = '{{$action}}'" class="btn-light-color" value="Close">
+		</div>
 		
 	</div>
 

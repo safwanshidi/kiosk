@@ -161,12 +161,12 @@
                         </div>
                         <div class="d-flex align-items-center rounded-pill p-3 mb-1"
                             style="height: 30px; background-color:#5ea7eb; font-size: 14px">
-                            <a href="#" style="text-decoration: none" class="mb-1 text-dark"><strong>View
+                            <a href="/staff/bursary/viewRecentReceipt" style="text-decoration: none" class="mb-1 text-dark"><strong>View
                                     Receipt</strong></a>
                         </div>
                         <div class="d-flex align-items-center rounded-pill p-3 mb-1"
                             style="height: 30px; background-color:#5ea7eb">
-                            <a href="#" style="text-decoration: none; font-size: 14px"
+                            <a href="/staff/bursary/setMontlyAmount" style="text-decoration: none; font-size: 14px"
                                 class="mb-1 text-dark"><strong>Set Montly Payment Amount</strong></a>
                         </div>
                     </div>

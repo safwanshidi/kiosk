@@ -77,6 +77,27 @@
 		width:20%;
 		border-radius: 4px;		
 	}
+
+	.btn-ligth-no-width
+	{
+		background-color:#CDE1FF;
+		border: none;
+		color: black;
+		padding: 10px;
+		text-align: center;
+		text-decoration: none;
+		font-size: 18px;
+		font-weight:bold;
+		border-radius: 4px;		
+	}
+	.btn-ligth-no-margin:active
+	{
+		background-color:#9DAEC9;
+	}
+	.btn-ligth-no-width:active
+	{
+		background-color:#9DAEC9;
+	}
 	
 	.btn-light-color:active
 	{
@@ -102,7 +123,19 @@
 		border-radius: 4px;
 		margin-top:18px;
 	}
-	
+	.btn-grey-color-no-width
+	{
+		background-color:#DBDBDB;
+		border: none;
+		color: black;
+		padding: 10px;
+		text-align: center;
+		text-decoration: none;
+		font-size: 18px;
+		font-weight:bold;
+		border-radius: 4px;
+		
+	}	
 	.btn-grey-color:active
 	{
 		background-color:#B6B6B6;
@@ -125,3 +158,14 @@
 		color:red;
 	}
 
+	.big-padding
+	{
+		padding:5%;
+	}
+	
+	.grey-background
+	{
+		background-color:#D9D9D9;
+	}
+	
+	

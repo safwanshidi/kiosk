@@ -78,11 +78,11 @@
 			);	
 		}
 
-		public function searchReceipt($payment_id)
+		public function searchReceipt($paymentId)
 		{
-		   $payment_data =  DB::table('receipts')->find($payment_id);
 
-		   return $payment_data;
+		   $paymentData =  DB::table('receipts')->find($paymentId);
+		   return $paymentData;
 		}
 	
 		public function searchAllArrears()
@@ -173,5 +173,107 @@
 			
 			
 			
+		}
+	
+		public function searchMontlyAmount()
+		{
+			$amount = DB::table('montly_amounts')->find(1);
+			return $amount;
+
+		}
+
+		public function updateAmount($amount)
+		{
+			$affected = DB::table('montly_amounts')
+						->where('id', 1)
+						->update(['amount' => $amount]);              
+			return $affected;
+		}
+		
+
+		public function searchRecentReceipt()
+		{
+			$receipt = DB::table('receipts')
+			->select('id','user_id','amount')
+			->latest('date')->limit(6)
+			->get();
+
+			return $receipt;         
+		}	
+
+
+		public function searchReceiptById($uid)
+		{
+			$receipt = DB::table('receipts as receipts')
+			->select('receipts.id','users.id as user_id','receipts.amount','users.name','receipts.date')
+			->where('users.id',$uid)
+			->rightJoin('users as users','users.id','=','receipts.user_id')
+			->get();
+			return $receipt;
+		}
+		
+		public function searchReceiptByDate($month,$year)
+		{
+			$receipt = DB::table('receipts as receipts')
+			->select('receipts.id','users.id as user_id','receipts.amount','users.name','receipts.date')
+			->whereMonth('date', $month)
+			->whereYear('date', $year)
+			->rightJoin('users as users','users.id','=','receipts.user_id')
+			->get();
+			return $receipt;			
+		}
+
+		public function searchStatus()
+		{
+			$status = DB::table('montly_amounts')
+			->select('status','amount')
+			->find(1);
+			return $status;      
+		}
+	
+	    public function createArrear($amount)
+		{ 
+			$date = date("Y-m-d");
+
+			$id = DB::table('arrears')->insertGetId(
+				[
+					'date' => $date, 
+					'amount' => $amount
+				]);
+			
+		   return $id;
+		}
+
+		public function creareStatus($arrearsId)
+		{
+		   //search all user id when role = student & vendor (要记得改)
+			$userId = DB::table('users')->select('id')
+										->where('role','STUDENT')
+										->orWhere('role','VENDOR')
+										->get();					
+		   //create array for each user id
+			foreach($userId as $id)
+			{
+				$statusArray[] = [
+					'users_id'=>$id->id,
+					'arrears_id'=>$arrearsId,
+					'status'=>0
+				];
+			   
+			}
+
+			//insert all data to database
+			$result = DB::table('payment_status')->insert($statusArray);
+
+			return $result;
+	 
+		}
+
+		public function updateStatus($status)
+		{
+			$affected = DB::table('montly_amounts')
+						->where('id', 1)
+						->update(['status' => $status]);
+			return $affected;        
 		}
 	}

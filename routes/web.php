@@ -57,6 +57,14 @@ Route::prefix('staff')->name('staff.')->group(function () {
 			Route::get('/bursary/viewReceiptInterface',[Controllers\PaymentController::class,'handlePayment']);
 			Route::get('/bursary/viewArrearsInterface',[Controllers\PaymentController::class,'viewArrearsInterface']);
 			Route::get('/bursary/viewArrearDetailInterface',[Controllers\PaymentController::class,'viewArrearDetail']);
+			Route::get('/bursary/setMontlyAmount',[Controllers\PaymentController::class,'setMonthlyAmount']);
+			Route::get('/bursary/modifyAmount',[Controllers\PaymentController::class,'modifyAmount']);
+			Route::get('/bursary/updateAmount',[Controllers\PaymentController::class,'updateAmount']);
+			Route::get('/bursary/viewRecentReceipt',[Controllers\PaymentController::class,'viewRecentReceip']);
+			Route::get('/bursary/viewReceiptDetail',[Controllers\PaymentController::class,'viewReceiptDetail']);
+			Route::get('/bursary/searchReceiptById',[Controllers\PaymentController::class,'searchReceiptById']);
+			Route::get('/bursary/refreshReceipt',[Controllers\PaymentController::class,'refreshReceipt']);
+			
 			
 		});
 		
