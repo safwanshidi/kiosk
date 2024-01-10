@@ -1,0 +1,25 @@
+	#wrong-img
+	{
+		height:100px;
+		object-fit: contain;
+		padding:20px;
+	}
+	
+	#back-btn
+	{
+		background-color:#003F9C;
+		border: none;
+		color: white;
+		padding: 10px;
+		text-align: center;
+		text-decoration: none;
+		font-size: 18px;
+		width:20%;
+		margin-top:18px;
+		
+	}
+	
+	#back-btn:active
+	{
+		background-color:#2661B9;
+	}

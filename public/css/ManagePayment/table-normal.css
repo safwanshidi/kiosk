@@ -1,0 +1,19 @@
+	th,td
+	{
+		border: 1.5px solid black;
+		padding:10px 40px 10px 40px;
+		text-align:center;
+	}
+
+
+	
+	th
+	{
+		background-color:#5D74C2;
+		color:white;
+	}
+
+	a
+	{
+		text-decoration:none;
+	}

@@ -1,0 +1,127 @@
+	.background-content
+	{
+		background-color:#EBEBEE;
+		padding-bottom:50px;
+	}
+	.title
+	{
+		background-color:#1A2F77;
+		padding:5px 10px 5px 20px;
+		color:white;
+		
+	}
+	
+	.form-content
+	{
+		padding:5px 10px 5px 20px;
+	}
+	
+	.flex
+	{	
+		margin:0 auto;
+		width:80%;
+		
+	}
+	
+	#submit-btn
+	{
+		background-color:#003F9C;
+		border: none;
+		color: white;
+		padding: 10px;
+		text-align: center;
+		text-decoration: none;
+		font-size: 18px;
+		width:20%;
+		margin-top:18px;
+		
+	}
+	
+	#submit-btn:active
+	{
+		background-color:#2661B9;
+	}
+
+	.sub-title-text
+	{
+		text-align:center;
+		margin-bottom:10px;
+		margin-top:10px;
+	}
+	
+	.btn-light-color
+	{
+		background-color:#CDE1FF;
+		border: none;
+		color: black;
+		padding: 10px;
+		text-align: center;
+		text-decoration: none;
+		font-size: 18px;
+		font-weight:bold;
+		width:20%;
+		border-radius: 4px;
+		margin-top:18px;		
+	}
+	
+	.btn-ligth-no-margin
+	{
+		background-color:#CDE1FF;
+		border: none;
+		color: black;
+		padding: 10px;
+		text-align: center;
+		text-decoration: none;
+		font-size: 18px;
+		font-weight:bold;
+		width:20%;
+		border-radius: 4px;		
+	}
+	
+	.btn-light-color:active
+	{
+		background-color:#9DAEC9;
+	}
+	
+	.padding-content
+	{
+		padding:15px 10px 15px 25px;
+	}
+	
+	.btn-grey-color
+	{
+		background-color:#DBDBDB;
+		border: none;
+		color: black;
+		padding: 10px;
+		text-align: center;
+		text-decoration: none;
+		font-size: 18px;
+		font-weight:bold;
+		width:20%;
+		border-radius: 4px;
+		margin-top:18px;
+	}
+	
+	.btn-grey-color:active
+	{
+		background-color:#B6B6B6;
+		
+	}
+	
+	.item-center
+	{
+		text-align:center;
+	}
+	
+	.flex-boxs
+	{
+		display: flex;
+		justify-content: center;
+	}
+
+	.invalid-comment
+	{
+		color:red;
+	}
+

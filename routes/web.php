@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers;
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UserController;
+use App\Http\Middleware;
 
 Route::get('/', function () {
     return redirect('/homePage');
@@ -45,3 +47,32 @@ Route::prefix('staff')->name('staff.')->group(function () {
 });
 
 
+//Module Payment
+Route::prefix('staff')->name('staff.')->group(function () {
+    Route::middleware(['auth'])->group(function () {
+		Route::middleware(['isBursary:bursary'])->group(function () 
+		{
+			Route::get('/bursary/makePayment', [Controllers\PaymentController::class,'viewMakePaymentPage']);
+			Route::get('/bursary/searchPaymentResult',[Controllers\PaymentController::class,'viewSearchPaymentPage']);
+			Route::get('/bursary/viewReceiptInterface',[Controllers\PaymentController::class,'handlePayment']);
+			Route::get('/bursary/viewArrearsInterface',[Controllers\PaymentController::class,'viewArrearsInterface']);
+			Route::get('/bursary/viewArrearDetailInterface',[Controllers\PaymentController::class,'viewArrearDetail']);
+			
+		});
+		
+		Route::middleware(['isAdmin:admin'])->group(function () 
+		{
+			//admin pages
+				
+		});	
+
+		Route::middleware(['isParticipant:participant'])->group(function () 
+		{
+			//participant page
+			
+		});				
+				
+		
+		
+    });
+});
