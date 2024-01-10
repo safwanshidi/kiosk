@@ -1,5 +1,11 @@
-@extends('adminTemplate')
-
+@auth
+	@if((auth()->user()->role == 'STUDENT')||(auth()->user()->role == 'VENDOR'))
+		@php $template = 'participant'@endphp
+	@else
+		@php $template = 'admin'@endphp
+	@endif
+@endauth
+	@extends($template.'Template')
 @section('content')
 	<link href="/css/ManagePayment/payment.css" rel="stylesheet">
 	<link href="/css/ManagePayment/table-normal.css" rel="stylesheet">
@@ -47,7 +53,7 @@
 		@else
 			<div class="item-center">No Arrears.</div>
 		@endif
-		<div class="d-flex justify-content-center">
+		<div class="d-flex justify-content-center padding-content">
 			<button class="btn-ligth-no-width px-3" id="back-btn" >Back</button>
 		</div>
 		

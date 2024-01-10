@@ -1,4 +1,25 @@
-@extends('adminTemplate')
+@auth
+	@if(auth()->user()->role == 'ADMIN')
+		@php 
+			$role = 'staff/admin'; 
+			$template = 'admin';
+		@endphp
+	@elseif(auth()->user()->role == 'FK BURSARY')
+		@php 
+			$role = 'staff/bursary';
+			$template = 'admin';
+		@endphp
+	@else
+		@php 
+			$role = 'user';
+			$template = 'participant';
+		@endphp
+	@endif
+@endauth
+
+
+
+@extends($template.'Template')
 
 @section('content')
 	<link href="/css/ManagePayment/payment.css" rel="stylesheet">
@@ -25,26 +46,18 @@
 			type = 2 view receipt detail by user id
 		*/
 		
-			if(auth()->user()->role == 'ADMIN')
-			{
-				$role = 'admin';
-			}
-			else if(auth()->user()->role == 'FK BURSARY')
-			{
-				$role = 'bursary';
-			}
 			
 			if($type==1)
 			{
-				$action = '/staff/'.$role.'/viewRecentReceipt'; 
+				$action = '/'.$role.'/viewRecentReceipt'; 
 			}
 			else if ($type==2)
 			{
-				$action = '/staff/'.$role.'/searchReceiptById?uid='.$paymentData->user_id.'&type=uid';     
+				$action = '/'.$role.'/searchReceiptById?uid='.$paymentData->user_id.'&type=uid';     
 			}
 			else
 			{
-				$action = '/staff/'.$role.'/makePayment';
+				$action = '/'.$role.'/makePayment';
 			}
 			
 

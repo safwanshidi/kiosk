@@ -91,14 +91,22 @@ Route::prefix('staff')->name('staff.')->group(function () {
 			
 				
 		});	
+	
+    });
+});
 
+Route::middleware(['auth'])->group(function ()
+{
+	Route::prefix('user')->name('user.')->group(function()
+	{
 		Route::middleware(['isParticipant:participant'])->group(function () 
 		{
 			//participant page
-			
-		});				
-				
-		
-		
-    });
+			Route::get('/viewArrearsInterface',[Controllers\PaymentController::class,'viewArrearsInterface']);
+			Route::get('/viewReceiptDetail',[Controllers\PaymentController::class,'viewReceiptDetail']);
+			Route::get('/searchReceiptById',[Controllers\PaymentController::class,'searchReceiptById']);
+			Route::get('/refreshReceipt',[Controllers\PaymentController::class,'refreshReceipt']);	
+		});			
+	});
+	
 });

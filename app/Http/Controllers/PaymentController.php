@@ -303,7 +303,7 @@ class PaymentController extends Controller
 		}
 		else
 		{
-			$receipt = $paymentModel->searchReceiptByDate($request->month,$request->year);
+			$receipt = $paymentModel->searchReceiptByDate($request->month,$request->year,$request->uid);
 		}
 		
 		return view('ManagePayment\RefreshTable',['receipt'=>$receipt]);	

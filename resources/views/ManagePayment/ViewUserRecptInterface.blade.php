@@ -1,17 +1,28 @@
-@extends('adminTemplate')
+@auth
+	@if(auth()->user()->role == 'ADMIN')
+		@php 
+			$role = 'staff/admin'; 
+			$template = 'admin';
+		@endphp
+	@elseif(auth()->user()->role == 'FK BURSARY')
+		@php 
+			$role = 'staff/bursary';
+			$template = 'admin';
+		@endphp
+	@else
+		@php 
+			$role = 'user';
+			$template = 'participant';
+		@endphp
+	@endif
+@endauth
+
+@extends($template.'Template')
 
 @section('content')
 	<link href="/css/ManagePayment/payment.css" rel="stylesheet">
 	<link href="/css/ManagePayment/table-normal.css" rel="stylesheet">
-	
-	@auth
-		@if(auth()->user()->role == 'ADMIN')
-			@php $role = 'admin' @endphp
-		@elseif(auth()->user()->role == 'FK BURSARY')
-			@php $role = 'bursary'@endphp
-		@endif
-	@endauth
-	
+
 	<div class="background-content">
 		<div class="title fs-4 container-fluid">View Receipt > User Receipt</div>
 		<input type="hidden" value="{{$role}}" id="role">
@@ -89,7 +100,7 @@
 					<td>{{$single_receipt->id}}</td>
 					<td>{{$single_receipt->date}}</td>
 					<td>{{$single_receipt->amount}}</td>
-					<td><a href="/staff/{{$role}}/viewReceiptDetail?id={{$single_receipt->id}}&type=2">View Detail</a></td>
+					<td><a href="/{{$role}}/viewReceiptDetail?id={{$single_receipt->id}}&type=2">View Detail</a></td>
 				</tr>
 				@endforeach					  
 				</tbody>	

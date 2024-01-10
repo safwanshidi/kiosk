@@ -212,12 +212,13 @@
 			return $receipt;
 		}
 		
-		public function searchReceiptByDate($month,$year)
+		public function searchReceiptByDate($month,$year,$uid)
 		{
 			$receipt = DB::table('receipts as receipts')
 			->select('receipts.id','users.id as user_id','receipts.amount','users.name','receipts.date')
 			->whereMonth('date', $month)
 			->whereYear('date', $year)
+			->where('user_id',$uid)
 			->rightJoin('users as users','users.id','=','receipts.user_id')
 			->get();
 			return $receipt;			

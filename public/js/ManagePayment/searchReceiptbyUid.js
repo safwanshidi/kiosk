@@ -1,18 +1,19 @@
 	var role = document.getElementById("role").value;
-	
+
 	document.getElementById("type").addEventListener("change",function()
 	{
 		if(document.getElementById("date").selected==true)
 		{
 			var month = document.getElementById("month").value;
 			var year = document.getElementById("year").value;
+			var uid = document.getElementById("uid").value;
 			
 			document.getElementById("month").disabled = false;
 			document.getElementById("year").disabled = false;
 			
 			//show receipt by date
 			var xhttp = new XMLHttpRequest();
-			xhttp.open("GET", '/staff/'+role+'/refreshReceipt?month='+month+'&type=date&year='+year, true);
+			xhttp.open("GET", '/'+role+'/refreshReceipt?month='+month+'&type=date&year='+year+'&uid='+uid, true);
 			xhttp.send();
 			xhttp.onreadystatechange = function() 
 			{
@@ -33,7 +34,7 @@
 			
 			//show all receipt
 			var xhttp = new XMLHttpRequest();
-			xhttp.open("GET", '/staff/'+role+'/refreshReceipt?uid='+uid+'&type=all', true);
+			xhttp.open("GET", '/'+role+'/refreshReceipt?uid='+uid+'&type=all', true);
 			xhttp.send();
 			xhttp.onreadystatechange = function() 
 			{
@@ -51,10 +52,11 @@
 	{
 		var month = document.getElementById("month").value;
 		var year = document.getElementById("year").value;
+		var uid = document.getElementById("uid").value;
 		
 		//show receipt by date
 		var xhttp = new XMLHttpRequest();
-		xhttp.open("GET", '/staff/'+role+'/refreshReceipt?month='+month+'&type=date&year='+year, true);
+		xhttp.open("GET", '/'+role+'/refreshReceipt?month='+month+'&type=date&year='+year+'&uid='+uid, true);
 		xhttp.send();
 		xhttp.onreadystatechange = function() 
 		{
@@ -71,10 +73,11 @@
 	{
 		var month = document.getElementById("month").value;
 		var year = document.getElementById("year").value;
+		var uid = document.getElementById("uid").value;
 		
 		//show receipt by date
 		var xhttp = new XMLHttpRequest();
-		xhttp.open("GET", '/staff/'+role+'/refreshReceipt?month='+month+'&type=date&year='+year, true);
+		xhttp.open("GET", '/'+role+'/refreshReceipt?month='+month+'&type=date&year='+year+'&uid='+uid, true);
 		xhttp.send();
 		xhttp.onreadystatechange = function() 
 		{
