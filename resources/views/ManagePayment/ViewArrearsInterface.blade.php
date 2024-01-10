@@ -4,11 +4,19 @@
 	<link href="/css/ManagePayment/payment.css" rel="stylesheet">
 	<link href="/css/ManagePayment/table-normal.css" rel="stylesheet">
 	
+	@auth
+		@if(auth()->user()->role == 'ADMIN')
+			@php $role = 'admin' @endphp
+		@elseif(auth()->user()->role == 'FK BURSARY')
+			@php $role = 'bursary'@endphp
+		@endif
+	@endauth	
+	
 	<div class="background-content">
 		<div class="title fs-4 container-fluid">View Users Arrears > Search</div>
 		
 		<!-- search bar -->
-		<form class="padding-content" action="/staff/bursary/viewArrearsInterface">
+		<form class="padding-content" action="/staff/{{$role}}/viewArrearsInterface">
 			<div class="px-5 invalid-comment">{{$errors->first()}}</div>
 			<div class="px-5 py-3 input-group">
 				<input class="form-control form-control-lg fs-6 " placeholder="user ID" type="text" name="uid" >
@@ -37,7 +45,7 @@
 								<tr>
 									<td>{{$item->users_id}}</td>
 									<td>{{$item->amount}}</td>
-									<td><a href="/staff/bursary/viewArrearDetailInterface?uid={{$item->users_id}}">View Detail</a>
+									<td><a href="/staff/{{$role}}/viewArrearDetailInterface?uid={{$item->users_id}}">View Detail</a>
 									</td>
 								</tr>
 								@endforeach					  

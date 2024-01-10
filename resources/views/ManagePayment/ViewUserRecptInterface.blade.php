@@ -4,8 +4,17 @@
 	<link href="/css/ManagePayment/payment.css" rel="stylesheet">
 	<link href="/css/ManagePayment/table-normal.css" rel="stylesheet">
 	
+	@auth
+		@if(auth()->user()->role == 'ADMIN')
+			@php $role = 'admin' @endphp
+		@elseif(auth()->user()->role == 'FK BURSARY')
+			@php $role = 'bursary'@endphp
+		@endif
+	@endauth
+	
 	<div class="background-content">
 		<div class="title fs-4 container-fluid">View Receipt > User Receipt</div>
+		<input type="hidden" value="{{$role}}" id="role">
 		<div class="padding-content row">
 			<div class="fs-4 fw-bold">User information</div>
 			<div class="fs-5 fw-bold col-3">ID</div>
@@ -80,7 +89,7 @@
 					<td>{{$single_receipt->id}}</td>
 					<td>{{$single_receipt->date}}</td>
 					<td>{{$single_receipt->amount}}</td>
-					<td><a href="/staff/bursary/viewReceiptDetail?id={{$single_receipt->id}}&type=2">View Detail</a></td>
+					<td><a href="/staff/{{$role}}/viewReceiptDetail?id={{$single_receipt->id}}&type=2">View Detail</a></td>
 				</tr>
 				@endforeach					  
 				</tbody>	

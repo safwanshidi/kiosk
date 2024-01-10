@@ -6,7 +6,15 @@
 	<div class="background-content">
 		<div class="title fs-4 container-fluid">Make Payment > Search</div>
 		
-		<form class="" action="/staff/bursary/searchPaymentResult">
+		@auth
+			@if(auth()->user()->role == 'ADMIN')
+				@php $role = 'admin' @endphp
+			@elseif(auth()->user()->role == 'FK BURSARY')
+				@php $role = 'bursary'@endphp
+			@endif
+		@endauth
+		
+		<form class="" action="/staff/{{$role}}/searchPaymentResult">
 				<div class="flex">
 					<div class="row d-flex flex-column">
 						<div class="sub-title-text fs-2 fw-bold">Enter user ID</div>

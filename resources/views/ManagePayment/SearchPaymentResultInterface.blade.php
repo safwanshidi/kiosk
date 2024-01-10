@@ -19,8 +19,14 @@
 			<div class="fs-4 fw-bold" align="center">All Arrears were settle.</div>
 		
 		@else
-			
-			<form class="padding-content"action="/staff/bursary/viewReceiptInterface">
+			@auth
+				@if(auth()->user()->role == 'ADMIN')
+					@php $role = 'admin' @endphp
+				@elseif(auth()->user()->role == 'FK BURSARY')
+					@php $role = 'bursary'@endphp
+				@endif
+			@endauth			
+			<form class="padding-content"action="/staff/{{$role}}/viewReceiptInterface">
 				<div class="fs-4 fw-bold pb-2">Unsettle Arrears</div>
 				<div class="fs-6 invalid-comment">{{$errors->first()}}</div>
 				<div class="table-size d-flex flex-column">

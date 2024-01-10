@@ -83,22 +83,22 @@
                         <p class="mb-1"><strong>Payment</strong></p>
                         <div class="d-flex align-items-center rounded-pill p-3 mb-1"
                             style="height: 30px; background-color:#5ea7eb">
-                            <a href='#' style="text-decoration: none" class="mb-1 text-dark"><strong>Make
+                            <a href='/staff/admin/makePayment' style="text-decoration: none" class="mb-1 text-dark"><strong>Make
                                     Payment</strong></a>
                         </div>
                         <div class="d-flex align-items-center rounded-pill p-3 mb-1"
                             style="height: 30px; background-color:#5ea7eb">
-                            <a href="#" style="text-decoration: none" class="mb-1 text-dark"><strong>View User
+                            <a href="/staff/admin/viewArrearsInterface" style="text-decoration: none" class="mb-1 text-dark"><strong>View User
                                     Arrears</strong></a>
                         </div>
                         <div class="d-flex align-items-center rounded-pill p-3 mb-1"
                             style="height: 30px; background-color:#5ea7eb">
-                            <a href="#" style="text-decoration: none" class="mb-1 text-dark"><strong>View
+                            <a href="/staff/admin/viewRecentReceipt" style="text-decoration: none" class="mb-1 text-dark"><strong>View
                                     Receipt</strong></a>
                         </div>
                         <div class="d-flex align-items-center rounded-pill p-3 mb-1"
                             style="height: 30px; background-color:#5ea7eb">
-                            <a href="#" style="text-decoration: none; font-size: 13px"
+                            <a href="/staff/admin/setMontlyAmount" style="text-decoration: none; font-size: 14px"
                                 class="mb-1 text-dark"><strong>Set Montly Payment Amount</strong></a>
                         </div>
                     </div>

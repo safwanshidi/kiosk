@@ -3,7 +3,9 @@
     var amount  = document.getElementById('amount');
     var confirmModel = document.getElementById('saveModal');
     var succesModal = document.getElementById('sucessModal');
+	var role = document.getElementById('role').value;
 	var pattern = /^[0-9]+(\.[0-9]{0,2})?$/;
+	
 	
 	
 	save.addEventListener("click",function()
@@ -25,7 +27,7 @@
             {
 
                 var xmlhttp=new XMLHttpRequest();
-                xmlhttp.open("GET","/staff/bursary/updateAmount?amount="+parsAmount,false);
+                xmlhttp.open("GET","/staff/"+role+"/updateAmount?amount="+parsAmount,false);
                 xmlhttp.send();
                 var affected = xmlhttp.responseText;  
 

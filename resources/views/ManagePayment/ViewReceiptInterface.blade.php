@@ -17,7 +17,6 @@
 				<div class="col-2">Pay For</div><div class="col-10">: {{$paymentData->months_of_pay}}</div>
 			</div>
 		</div>
-		
 		<?php
 
 		/*
@@ -25,18 +24,27 @@
 			type = 1 is for view Receipt
 			type = 2 view receipt detail by user id
 		*/
-
+		
+			if(auth()->user()->role == 'ADMIN')
+			{
+				$role = 'admin';
+			}
+			else if(auth()->user()->role == 'FK BURSARY')
+			{
+				$role = 'bursary';
+			}
+			
 			if($type==1)
 			{
-				$action = '/staff/bursary/viewRecentReceipt'; 
+				$action = '/staff/'.$role.'/viewRecentReceipt'; 
 			}
 			else if ($type==2)
 			{
-				$action = '/staff/bursary/searchReceiptById?uid='.$paymentData->user_id.'&type=uid';     
+				$action = '/staff/'.$role.'/searchReceiptById?uid='.$paymentData->user_id.'&type=uid';     
 			}
 			else
 			{
-				$action = '/staff/bursary/makePayment';
+				$action = '/staff/'.$role.'/makePayment';
 			}
 			
 

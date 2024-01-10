@@ -47,8 +47,12 @@
 		@else
 			<div class="item-center">No Arrears.</div>
 		@endif
+		<div class="d-flex justify-content-center">
+			<button class="btn-ligth-no-width px-3" id="back-btn" >Back</button>
+		</div>
+		
 	</div>
-	
+	<script type="text/javascript" src="/js/ManagePayment/uidNotFound.js"></script>
 	
 
 

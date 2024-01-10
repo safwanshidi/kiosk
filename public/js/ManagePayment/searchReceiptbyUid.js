@@ -1,3 +1,5 @@
+	var role = document.getElementById("role").value;
+	
 	document.getElementById("type").addEventListener("change",function()
 	{
 		if(document.getElementById("date").selected==true)
@@ -10,7 +12,7 @@
 			
 			//show receipt by date
 			var xhttp = new XMLHttpRequest();
-			xhttp.open("GET", '/staff/bursary/refreshReceipt?month='+month+'&type=date&year='+year, true);
+			xhttp.open("GET", '/staff/'+role+'/refreshReceipt?month='+month+'&type=date&year='+year, true);
 			xhttp.send();
 			xhttp.onreadystatechange = function() 
 			{
@@ -31,7 +33,7 @@
 			
 			//show all receipt
 			var xhttp = new XMLHttpRequest();
-			xhttp.open("GET", '/staff/bursary/refreshReceipt?uid='+uid+'&type=all', true);
+			xhttp.open("GET", '/staff/'+role+'/refreshReceipt?uid='+uid+'&type=all', true);
 			xhttp.send();
 			xhttp.onreadystatechange = function() 
 			{
@@ -52,7 +54,7 @@
 		
 		//show receipt by date
 		var xhttp = new XMLHttpRequest();
-		xhttp.open("GET", '/staff/bursary/refreshReceipt?month='+month+'&type=date&year='+year, true);
+		xhttp.open("GET", '/staff/'+role+'/refreshReceipt?month='+month+'&type=date&year='+year, true);
 		xhttp.send();
 		xhttp.onreadystatechange = function() 
 		{
@@ -72,7 +74,7 @@
 		
 		//show receipt by date
 		var xhttp = new XMLHttpRequest();
-		xhttp.open("GET", '/staff/bursary/refreshReceipt?month='+month+'&type=date&year='+year, true);
+		xhttp.open("GET", '/staff/'+role+'/refreshReceipt?month='+month+'&type=date&year='+year, true);
 		xhttp.send();
 		xhttp.onreadystatechange = function() 
 		{

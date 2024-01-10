@@ -3,11 +3,20 @@
 @section('content')
 	<link href="/css/ManagePayment/payment.css" rel="stylesheet">
 	
+	@auth
+		@if(auth()->user()->role == 'ADMIN')
+			@php $role = 'admin' @endphp
+		@elseif(auth()->user()->role == 'FK BURSARY')
+			@php $role = 'bursary'@endphp
+		@endif
+	@endauth
+	
 	<div class="background-content">
 		<div class="title fs-4 container-fluid">Set Monthly Payment > Modify Amount</div>
 		<div class="big-padding">
 			<div class="d-flex flex-column align-items-center">
 				<div class="fs-3">Monthly Payment Amount</div>
+				<input type="hidden" value="{{$role}}" id="role">
 				
 				<div class="fs-4 fw-bold padding-content">
 					<input type="text" id="amount" placeholder="Enter Amount (RM)" pattern="^[0-9]+(\.[0-9]{0,2})?$">
@@ -17,7 +26,7 @@
 			<div class="d-flex justify-content-evenly padding-content">
 				<button class="btn-ligth-no-width fs-5 " id="save-btn" data-bs-toggle="modal" data-bs-target="#saveModal" >&nbsp;&nbsp;Save&nbsp;&nbsp;</button>
 
-				<a href="/staff/bursary/setMontlyAmount">
+				<a href="/staff/{{$role}}/setMontlyAmount">
 						<button class="btn-grey-color-no-width fs-5" >Cancel</button>
 				</a>
 				
