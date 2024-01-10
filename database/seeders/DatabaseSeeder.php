@@ -34,6 +34,36 @@ class DatabaseSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
+			[
+                'name' => 'Student',
+                'ic' => '111122211111',
+                'email' => 'student1@example.com',
+                'phone' => '1236667888',
+                'role' => 'STUDENT',
+                'password' => 'password', 
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => 'Vendor',
+                'ic' => '444444444444',
+                'email' => 'vendor@example.com',
+                'phone' => '1234567000',
+                'role' => 'VENDOR',
+                'password' => 'password', 
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => 'Vendor',
+                'ic' => '444455444444',
+                'email' => 'vendor1@example.com',
+                'phone' => '1234567110',
+                'role' => 'VENDOR',
+                'password' => 'password', 
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],	
             [
                 'name' => 'Technical',
                 'ic' => '333333333333',
@@ -53,17 +83,7 @@ class DatabaseSeeder extends Seeder
                 'password' => 'password', 
                 'created_at' => now(),
                 'updated_at' => now(),
-            ],
-            [
-                'name' => 'Vendor',
-                'ic' => '444444444444',
-                'email' => 'vendor@example.com',
-                'phone' => '1234567000',
-                'role' => 'VENDOR',
-                'password' => 'password', 
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
+            ],			
             [
                 'name' => 'Pupuk Admin',
                 'ic' => '666666666666',
@@ -75,5 +95,11 @@ class DatabaseSeeder extends Seeder
                 'updated_at' => now(),
             ],
         ]);
+		$this->call(UserSeeder::class);
+		$this->call(MontlyPaymentSeeder::class);
+		$this->call(ArrearSeeder::class);
+		$this->call(StatusSeeder::class);
+		$this->call(ReceiptSeeder::class);
+		
     }
 }

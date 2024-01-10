@@ -8,12 +8,16 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use Carbon\Carbon;
+use Illuminate\Support\Collection;
+use App\Http\Controllers\PaymentController;
 
 class LoginController extends Controller
 {
     public function login(Request $request)
     {
-        $credentials = $request->only('email', 'password');
+        $paymentController = new PaymentController();
+		
+		$credentials = $request->only('email', 'password');
         $user = User::where('email', $credentials['email'])->first();
 
         if ($user && $user->password === $credentials['password']) {
@@ -24,9 +28,17 @@ class LoginController extends Controller
             if ($user->role == 'STUDENT' || $user->role == 'VENDOR') {
                 return redirect()->route('user.showUserProfile', ['id' => $user->id])->with('success', 'You\'re logged in');
             }else if($user->role == 'ADMIN'){
+				//check whether is last or first day
+				$paymentController->checkDateStatus();
                 return redirect()->route('staff.showStaffProfile', ['id' => $user->id])->with('success', 'You\'re logged in');
-            }else
-                return redirect()->route('staff.showStaffProfile', ['id' => $user->id])->with('success', 'You\'re logged in');
+            }else if($user->role == 'FK BURSARY'){
+				//check whether is last or first day
+				$paymentController->checkDateStatus();
+				return redirect()->route('staff.showStaffProfile', ['id' => $user->id])->with('success', 'You\'re logged in');
+			}else{
+				return redirect()->route('staff.showStaffProfile', ['id' => $user->id])->with('success', 'You\'re logged in');
+			}
+                
         }
 
         // Passwords don't match or user not found

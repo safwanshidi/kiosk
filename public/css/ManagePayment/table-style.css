@@ -1,0 +1,34 @@
+	th:nth-child(n+2), td:nth-child(n+2)
+	{
+		border: 1.5px solid black;
+		padding:10px 40px 10px 40px;
+		text-align:center;
+	}
+
+	
+	th:nth-child(1), td:nth-child(1)
+	{
+		padding:10px;
+	}
+	
+	th:nth-child(n+2)
+	{
+		background-color:#5D74C2;
+		color:white;
+	}
+	
+	input[type="checkbox"]
+	{
+		width:25px;
+		height:25px;
+	}
+	
+	.table-size
+	{
+		width:60%;
+	}
+	
+	.button-margin
+	{
+		margin-left:30px;
+	}

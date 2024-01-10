@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers;
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UserController;
+use App\Http\Middleware;
 
 Route::get('/', function () {
     return redirect('/homePage');
@@ -45,3 +47,66 @@ Route::prefix('staff')->name('staff.')->group(function () {
 });
 
 
+//Module Payment
+Route::prefix('staff')->name('staff.')->group(function () {
+    Route::middleware(['auth'])->group(function () {
+		Route::middleware(['isBursary:bursary'])->group(function () 
+		{
+			Route::prefix('bursary')->group(function () 
+			{
+				Route::get('/makePayment', [Controllers\PaymentController::class,'viewMakePaymentPage']);
+				Route::get('/searchPaymentResult',[Controllers\PaymentController::class,'viewSearchPaymentPage']);
+				Route::get('/viewReceiptInterface',[Controllers\PaymentController::class,'handlePayment']);
+				Route::get('/viewArrearsInterface',[Controllers\PaymentController::class,'viewArrearsInterface']);
+				Route::get('/viewArrearDetailInterface',[Controllers\PaymentController::class,'viewArrearDetail']);
+				Route::get('/setMontlyAmount',[Controllers\PaymentController::class,'setMonthlyAmount']);
+				Route::get('/modifyAmount',[Controllers\PaymentController::class,'modifyAmount']);
+				Route::get('/updateAmount',[Controllers\PaymentController::class,'updateAmount']);
+				Route::get('/viewRecentReceipt',[Controllers\PaymentController::class,'viewRecentReceip']);
+				Route::get('/viewReceiptDetail',[Controllers\PaymentController::class,'viewReceiptDetail']);
+				Route::get('/searchReceiptById',[Controllers\PaymentController::class,'searchReceiptById']);
+				Route::get('/refreshReceipt',[Controllers\PaymentController::class,'refreshReceipt']);				
+			});
+		});	
+	
+		
+		Route::middleware(['isAdmin:admin'])->group(function () 
+		{
+			//admin pages
+			Route::prefix('admin')->group(function () 
+			{
+				Route::get('/makePayment', [Controllers\PaymentController::class,'viewMakePaymentPage']);
+				Route::get('/searchPaymentResult',[Controllers\PaymentController::class,'viewSearchPaymentPage']);
+				Route::get('/viewReceiptInterface',[Controllers\PaymentController::class,'handlePayment']);
+				Route::get('/viewArrearsInterface',[Controllers\PaymentController::class,'viewArrearsInterface']);
+				Route::get('/viewArrearDetailInterface',[Controllers\PaymentController::class,'viewArrearDetail']);
+				Route::get('/setMontlyAmount',[Controllers\PaymentController::class,'setMonthlyAmount']);
+				Route::get('/modifyAmount',[Controllers\PaymentController::class,'modifyAmount']);
+				Route::get('/updateAmount',[Controllers\PaymentController::class,'updateAmount']);
+				Route::get('/viewRecentReceipt',[Controllers\PaymentController::class,'viewRecentReceip']);
+				Route::get('/viewReceiptDetail',[Controllers\PaymentController::class,'viewReceiptDetail']);
+				Route::get('/searchReceiptById',[Controllers\PaymentController::class,'searchReceiptById']);
+				Route::get('/refreshReceipt',[Controllers\PaymentController::class,'refreshReceipt']);			
+			});
+			
+				
+		});	
+	
+    });
+});
+
+Route::middleware(['auth'])->group(function ()
+{
+	Route::prefix('user')->name('user.')->group(function()
+	{
+		Route::middleware(['isParticipant:participant'])->group(function () 
+		{
+			//participant page
+			Route::get('/viewArrearsInterface',[Controllers\PaymentController::class,'viewArrearsInterface']);
+			Route::get('/viewReceiptDetail',[Controllers\PaymentController::class,'viewReceiptDetail']);
+			Route::get('/searchReceiptById',[Controllers\PaymentController::class,'searchReceiptById']);
+			Route::get('/refreshReceipt',[Controllers\PaymentController::class,'refreshReceipt']);	
+		});			
+	});
+	
+});
