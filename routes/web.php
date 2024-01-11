@@ -13,6 +13,8 @@ Route::post('/apply-kiosk', [KioskController::class, 'applyKiosk'])->name('apply
 Route::post('/user/submitApplyKiosk', [UserController::class, 'submitApplyKiosk'])->name('user.submitApplyKiosk');
 Route::get('/user/home', 'UserController@home')->name('user.home');
 Route::get('/user/reportList', 'UserController@reportList')->name('user.reportList');
+Route::post('/user/submitApplyKiosk', 'UserController@submitApplyKiosk')->name('user.submitApplyKiosk');
+
 
 
 Route::get('/', function () {
