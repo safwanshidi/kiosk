@@ -6,24 +6,29 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateKioskapprovalTable extends Migration
 {
+    /**
+     * Run the migrations.
+     */
     public function up()
     {
-        Schema::create('kioskapproval', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('application_id');
-            $table->foreign('application_id')->references('id')->on('applications')->onDelete('cascade');
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->string('KioskNo');
-            $table->enum('kioskStatus', ['Approved', 'Waiting', 'Rejected']);
-            // Add other fields as needed
-            $table->timestamps();
-        });
+        if (!Schema::hasTable('kioskapproval')) {
+            Schema::create('kioskapproval', function (Blueprint $table) {
+                $table->id('kioskID');
+                $table->foreignId('application_id')->constrained(); // Assuming you have an 'applications' table
+                $table->foreignId('user_id')->constrained('users');
+                $table->string('KioskNo');
+                $table->enum('kioskStatus', ['Approved', 'Waiting', 'Rejected']);
+                // Add other fields as needed
+                $table->timestamps(0); // Disabling timestamps
+            });
+        }
     }
 
+    /**
+     * Reverse the migrations.
+     */
     public function down()
     {
         Schema::dropIfExists('kioskapproval');
     }
-
-};
+}

@@ -21,6 +21,8 @@ Route::delete('/delete-application/{application}', [KioskController::class, 'del
 Route::put('/update-application/{applicationId}', [KioskController::class, 'updateApplication'])->name('update-application');
 Route::get('/edit-kiosk/{applicationId}', [KioskController::class, 'editKiosk'])->name('edit-kiosk');
 
+Route::get('/kiosk-participant', [KioskController::class, 'showKioskParticipant'])->name('kiosk-participant');
+
 
 
 Route::get('/', function () {
