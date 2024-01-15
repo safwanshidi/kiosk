@@ -15,11 +15,11 @@ return new class extends Migration
             $table->string('id', 255)->unique()->primary();
             $table->date('date');
             $table->time('time');
-            $table->decimal('amount',8,2);
+            $table->decimal('amount', 8, 2);
             $table->mediumText('months_of_pay');
             $table->foreignId('user_id')->references('id')->on('users')
-                    ->onUpdate('cascade')
-                    ->onDelete('cascade');
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
         });
     }
 

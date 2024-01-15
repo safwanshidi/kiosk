@@ -72,10 +72,10 @@
                     </div>
                     <div class="d-flex align-items-center rounded-pill p-3 mb-1"
                         style="height: 30px; background-color:#5ea7eb">
-                        <a href="#" style="text-decoration: none"
-                            class="mb-1 text-dark"><strong>Application Status</strong></a>
+                        <a href="#" style="text-decoration: none" class="mb-1 text-dark"><strong>Application
+                                Status</strong></a>
                     </div>
-                    
+
                 </div>
                 <!--Payment-->
                 <div class="p-2 mb-4" style=" background-color: #dfdfdfe4; border-radius: 20px;">

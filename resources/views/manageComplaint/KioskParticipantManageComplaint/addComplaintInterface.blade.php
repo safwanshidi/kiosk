@@ -17,8 +17,7 @@
                     </div>
 
                     <div>
-                        <form method="post"
-                            action="{{ route('manageComplaint.KioskParticipantManageComplaint.addComplaint') }}">
+                        <form method="post" action="/user/addComplaintInterface">
                             @csrf
                             @method('post')
                             <div class="form-group row mb-2">
