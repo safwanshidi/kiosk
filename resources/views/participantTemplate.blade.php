@@ -67,19 +67,15 @@
                     <p class="mb-1"><strong>Kiosk Application</strong></p>
                     <div class="d-flex align-items-center rounded-pill p-3 mb-1"
                         style="height: 30px; background-color:#5ea7eb">
-                        <a href="#" style="text-decoration: none"
-                            class="mb-1 text-dark"><strong>Cont...</strong></a>
+                        <a href="{{ route('user.applyKiosk') }}" style="text-decoration: none"
+                            class="mb-1 text-dark"><strong>Kiosk Application</strong></a>
                     </div>
                     <div class="d-flex align-items-center rounded-pill p-3 mb-1"
                         style="height: 30px; background-color:#5ea7eb">
                         <a href="#" style="text-decoration: none"
-                            class="mb-1 text-dark"><strong>Cont...</strong></a>
+                            class="mb-1 text-dark"><strong>Application Status</strong></a>
                     </div>
-                    <div class="d-flex align-items-center rounded-pill p-3 mb-1"
-                        style="height: 30px; background-color:#5ea7eb">
-                        <a href="#" style="text-decoration: none"
-                            class="mb-1 text-dark"><strong>Cont...</strong></a>
-                    </div>
+                    
                 </div>
                 <!--Payment-->
                 <div class="p-2 mb-4" style=" background-color: #dfdfdfe4; border-radius: 20px;">

@@ -6,6 +6,16 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware;
+use App\Http\Controllers\KioskController;
+
+Route::get('/manage-kiosk', [KioskController::class, 'showApplyKioskForm'])->name('manage-kiosk');
+Route::post('/apply-kiosk', [KioskController::class, 'applyKiosk'])->name('apply-kiosk');
+Route::post('/user/submitApplyKiosk', [UserController::class, 'submitApplyKiosk'])->name('user.submitApplyKiosk');
+Route::get('/user/home', 'UserController@home')->name('user.home');
+Route::get('/user/reportList', 'UserController@reportList')->name('user.reportList');
+Route::post('/user/submitApplyKiosk', 'UserController@submitApplyKiosk')->name('user.submitApplyKiosk');
+
+
 
 Route::get('/', function () {
 	return redirect('/homePage');
@@ -32,7 +42,21 @@ Route::prefix('user')->name('user.')->group(function () {
 		Route::view('/participantProfile', 'manageProfile.participantProfile')->name('participantProfile');
 		Route::put('/profile/{id}/update',  [UserController::class, 'update'])->name('updateUserProfile');
 	});
+
+    Route::middleware(['auth'])->group(function () {
+        Route::get('/profile/{id}', [UserController::class, 'show'])->name('showUserProfile');
+        Route::view('/participantProfile', 'manageProfile.participantProfile')->name('participantProfile');
+        Route::put('/profile/{id}/update',  [UserController::class, 'update'])->name('updateUserProfile');
+
+		 // New route for applying to Kiosk
+		Route::get('/apply-kiosk', [UserController::class, 'applyKiosk'])->name('applyKiosk');
+		Route::post('/applyKiosk', [UserController::class, 'applyKiosk'])->name('user.applyKiosk');
+
+    });
 });
+
+
+
 
 Route::prefix('staff')->name('staff.')->group(function () {
 	Route::middleware(['auth'])->group(function () {
