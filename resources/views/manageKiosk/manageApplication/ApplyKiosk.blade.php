@@ -1,29 +1,23 @@
 <style>
-
-
-             
     .btn-grad {
-            background-image: linear-gradient(to right, #4776E6 0%, #8E54E9  51%, #4776E6  100%);
-            margin: 0px;
-            padding: 15px 45px;
-            text-align: center;
-            text-transform: uppercase;
-            transition: 0.5s;
-            background-size: 200% auto;
-            color: white;            
-            box-shadow: 0 0 20px #eee;
-            border-radius: 10px;
-            display: block;
-          }
+        background-image: linear-gradient(to right, #4776E6 0%, #8E54E9 51%, #4776E6 100%);
+        margin: 0px;
+        padding: 15px 45px;
+        text-align: center;
+        text-transform: uppercase;
+        transition: 0.5s;
+        background-size: 200% auto;
+        color: white;
+        box-shadow: 0 0 20px #eee;
+        border-radius: 10px;
+        display: block;
+    }
 
-          .btn-grad:hover {
-            background-position: right center; /* change the direction of the change here */
-            color: #000000;
-            text-decoration: none;
-          }
-         
-
-    /* Add your other styles here */
+    .btn-grad:hover {
+        background-position: right center;
+        color: #000000;
+        text-decoration: none;
+    }
 </style>
 
 @extends('layouts.userNav')
@@ -31,7 +25,7 @@
 @section('main-content')
     <div class="container2" style="background-color: white; border-radius: 30px; margin-left: 100px; margin-right: 100px;">
 
-    <form action="{{ route('user.submitApplyKiosk') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('apply-kiosk') }}" method="POST" enctype="multipart/form-data">
 
             <div class="mt-4 profile-header pr-5 pl-5 pt-3">
                 <div class="text-center">
@@ -57,6 +51,7 @@
                     <div class="col-3">
                         <p><b>Business Role</b></p>
                     </div>
+
 
                     <div class="w-100">
                         <select class="form-select" id="business_role" name="business_role" required>
@@ -157,22 +152,25 @@
                     </div>
                 </div>
 
-                <hr class="border-0">
-            </div>
+                <<hr class="border-0">
 
-            <div class="text-center mt-5">
-                @csrf
-                <button type="submit" class="btn pl-3 pr-3 mb-4 btn-grad" style="color: #ffffff" data-mdb-ripple-init>Apply</button>
-            </div>
-        </form>
-    </div>
+<div class="text-center mt-5">
+    @csrf
+    <button type="submit" class="btn pl-3 pr-3 mb-4 btn-grad" style="color: #ffffff"
+        data-mdb-ripple-init>Apply</button>
+</div>
+</div>
 
-    <script>
-            $(document).ready(function() {
-        $('.btn-grad').click(function() {
-            // Submit the form
-            $(this).closest('form').submit();
-        });
-    });
-    </script>
+</form>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+$(document).ready(function () {
+$('.btn-grad').click(function () {
+// Submit the form
+$(this).closest('form').submit();
+});
+});
+</script>
 @endsection

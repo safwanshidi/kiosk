@@ -4,52 +4,107 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-use App\Models\Applications;
+use App\Models\Application;
+use App\Models\Kiosk;
 
 class KioskController extends Controller
 {
+    public function showManageApplication()
+    {
+        $applications = Application::all();
+        return view('manageKiosk.manageApplication.KioskApproval', ['applications' => $applications]);
+    }
+
     public function showApplyKioskForm()
-{
-    return view('manageKiosk.manageApplication.ApplyKiosk');
-}
-
-
+    {
+        return view('manageKiosk.manageApplication.ApplyKiosk');
+    }
     public function applyKiosk(Request $request)
     {
-        try {
-            $request->validate([
-                'business_name' => 'required|string|max:255',
-                'business_role' => 'required|string|max:255',
-                'business_category' => 'required|string|max:255',
-                'business_information' => 'required|string',
-                'business_operating_hour' => 'required|string',
-                'business_start_date' => 'required|date',
-                'ssm_pdf' => 'required|mimes:pdf|max:2048',
-                'business_proposal_pdf' => 'required|mimes:pdf|max:2048',
-            ]);
-
-            $ssmPdfPath = $request->file('ssm_pdf')->store('pdfs');
-            $businessProposalPdfPath = $request->file('business_proposal_pdf')->store('pdfs');
-
-            $application = new Applications([
-                'user_id' => Auth::id(),
-                'business_name' => $request->input('business_name'),
-                'business_role' => $request->input('business_role'),
-                'business_category' => $request->input('business_category'),
-                'business_information' => $request->input('business_information'),
-                'business_operating_hour' => $request->input('business_operating_hour'),
-                'business_start_date' => $request->input('business_start_date'),
-                'ssm_pdf' => $ssmPdfPath,
-                'business_proposal_pdf' => $businessProposalPdfPath,
-                'application_status' => 'New',
-                'application_comment' => '',
-            ]);
-
-            $application->save();
-
-            return view('manageKiosk.manageApplication.PendingApproval');
-        } catch (\Throwable $th) {
-            return view('error', ['error' => $th->getMessage()]);
-        }
+        $request->validate([
+            'business_name' => 'required|string|max:255',
+            'business_role' => 'required|string|max:255',
+            'business_category' => 'required|string|max:255',
+            'business_information' => 'required|string',
+            'business_operating_hour' => 'required|string',
+            'business_start_date' => 'required|date',
+            'ssm_pdf' => 'required|mimes:pdf|max:2048',
+            'business_proposal_pdf' => 'required|mimes:pdf|max:2048',
+        ]);
+    
+        $operatingHours = $request->input('business_operating_hour');
+        $operatingHours = date('H:i:s', strtotime($operatingHours));
+    
+        $application = new Application([
+            'user_id' => Auth::id(),
+            'business_name' => $request->input('business_name'),
+            'business_role' => $request->input('business_role'),
+            'business_category' => $request->input('business_category'),
+            'business_information' => $request->input('business_information'),
+            'business_operating_hour' => $operatingHours,
+            'business_start_date' => $request->input('business_start_date'),
+        ]);
+        
+        $ssmPdfPath = $request->file('ssm_pdf')->store('pdfs');
+        $businessProposalPdfPath = $request->file('business_proposal_pdf')->store('pdfs');
+        
+        $application->ssm_pdf = $ssmPdfPath;
+        $application->business_proposal_pdf = $businessProposalPdfPath;
+        
+        $application->save();
+        
+    
+        return redirect()->route('pending.approval');
     }
+    
+
+    
+    public function showPupukHome()
+    {
+        // logic for Pupuk Admin home page goes here
+        return view('layouts.pupukAdminNav'); 
+    }
+
+    public function deleteApplication(Application $application)
+    {
+        $application->delete();
+    
+        return response()->json(['message' => 'Application deleted successfully']);
+    }
+
+    public function editKiosk($applicationId)
+{
+    $application = Application::find($applicationId);
+    return view('manageKiosk.manageApplication.editKiosk', compact('application'));
+}
+
+public function updateApplication(Request $request, $applicationId)
+{
+    // Validation rules for the updated fields
+    $request->validate([
+        'KioskNo' => 'required|string|max:255',
+        'kioskStatus' => 'required|in:Approved,Waiting,Rejected',
+    ]);
+
+    // Find the application
+    $application = Application::find($applicationId);
+
+    // Update the application information
+    $application->KioskNo = $request->input('KioskNo');
+    $application->kioskStatus = $request->input('kioskStatus');
+
+    // Save the changes
+    $application->save();
+
+    // Create a new Kioskapproval entry
+    Kioskapproval::create([
+        'application_id' => $applicationId,
+        'user_id' => $application->user_id,
+        'KioskNo' => $request->input('KioskNo'),
+        'kioskStatus' => $request->input('kioskStatus'),
+        // Add other fields as needed
+    ]);
+
+    return redirect()->route('manage-application');
+}
 }

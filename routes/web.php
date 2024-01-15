@@ -5,15 +5,20 @@ use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UserController;
-use App\Http\Middleware;
 use App\Http\Controllers\KioskController;
 
 Route::get('/manage-kiosk', [KioskController::class, 'showApplyKioskForm'])->name('manage-kiosk');
 Route::post('/apply-kiosk', [KioskController::class, 'applyKiosk'])->name('apply-kiosk');
-Route::post('/user/submitApplyKiosk', [UserController::class, 'submitApplyKiosk'])->name('user.submitApplyKiosk');
 Route::get('/user/home', 'UserController@home')->name('user.home');
 Route::get('/user/reportList', 'UserController@reportList')->name('user.reportList');
-Route::post('/user/submitApplyKiosk', 'UserController@submitApplyKiosk')->name('user.submitApplyKiosk');
+Route::view('/pending-approval', 'manageKiosk.manageApplication.PendingApproval')->name('pending.approval');
+
+
+Route::get('/pupuk/home', [KioskController::class, 'showPupukHome'])->name('pupuk.home');
+Route::get('/manage-application', [KioskController::class, 'showManageApplication'])->name('manage-application');
+Route::delete('/delete-application/{application}', [KioskController::class, 'deleteApplication']);
+Route::put('/update-application/{applicationId}', [KioskController::class, 'updateApplication'])->name('update-application');
+Route::get('/edit-kiosk/{applicationId}', [KioskController::class, 'editKiosk'])->name('edit-kiosk');
 
 
 

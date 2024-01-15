@@ -13,10 +13,10 @@ class Application extends Model
 
     protected $table = 'applications';
 
-    protected $primaryKey = 'application_id';
+    protected $primaryKey = 'applicationId';
 
     protected $fillable = [
-        'user_id',
+        'id',
         'business_name',
         'business_role',
         'business_category',
