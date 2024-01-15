@@ -104,4 +104,11 @@ public function updateApplication(Request $request, $applicationId)
     return redirect()->route('manage-application');
 }
 
+public function showKioskParticipant()
+{
+    $kioskApprovals = Kioskapproval::all();
+    return view('manageKiosk.manageParticipant.KioskParticipant', compact('kioskApprovals'));
+}
+
+
 }
