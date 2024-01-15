@@ -4,14 +4,15 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+class CreateApplicationsTable extends Migration
 {
     /**
      * Run the migrations.
      */
-    public function up(): void
-{
-    Schema::create('applications', function (Blueprint $table) {
+    public function up()
+    {
+        if (!Schema::hasTable('applications')) {
+            Schema::create('applications', function (Blueprint $table) {
         $table->bigIncrements('applicationId'); // This creates an auto-incrementing primary key column named 'applicationId'
         $table->string('business_name')->unique();
         $table->string('business_role');
@@ -24,13 +25,12 @@ return new class extends Migration
         $table->timestamps();
     });
 }
-
-
-    /**
+    }
+/**
      * Reverse the migrations.
      */
-    public function down(): void
+    public function down()
     {
         Schema::dropIfExists('applications');
     }
-};
+}

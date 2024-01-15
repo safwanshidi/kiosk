@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Application;
-use App\Models\Kiosk;
+use App\Models\Kioskapproval;
 
 class KioskController extends Controller
 {
@@ -89,22 +89,19 @@ public function updateApplication(Request $request, $applicationId)
     // Find the application
     $application = Application::find($applicationId);
 
-    // Update the application information
-    $application->KioskNo = $request->input('KioskNo');
-    $application->kioskStatus = $request->input('kioskStatus');
-
-    // Save the changes
-    $application->save();
-
     // Create a new Kioskapproval entry
     Kioskapproval::create([
         'application_id' => $applicationId,
-        'user_id' => $application->user_id,
+        'user_id' => Auth::id(), // Assuming you still want to store the user_id
         'KioskNo' => $request->input('KioskNo'),
         'kioskStatus' => $request->input('kioskStatus'),
         // Add other fields as needed
     ]);
 
+    // Optionally, you can delete the original application record if needed
+    // $application->delete();
+
     return redirect()->route('manage-application');
 }
+
 }
