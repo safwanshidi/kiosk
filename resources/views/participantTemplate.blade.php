@@ -56,12 +56,13 @@
             <div class="col-2">
                 <div class="d-flex align-items-center rounded-pill p-2 mb-5"
                     style="height: 50px; background-color: #dfdfdfe4">
-                    <a style="text-decoration: none" class="text-dark" href="{{ route('user.showUserProfile', auth()->user()->id) }}">
+                    <a style="text-decoration: none" class="text-dark"
+                        href="{{ route('user.showUserProfile', auth()->user()->id) }}">
                         <i class="far fa-circle-user fa-2x mr-3"></i>&nbsp;
                     </a>
                     <p class="mb-0"><strong>{{ auth()->user()->name }}</strong></p>
                 </div>
-				<!--Kiosk Application-->
+                <!--Kiosk Application-->
                 <div class="p-2 mb-4" style=" background-color: #dfdfdfe4; border-radius: 20px;">
                     <p class="mb-1"><strong>Kiosk Application</strong></p>
                     <div class="d-flex align-items-center rounded-pill p-3 mb-1"
@@ -76,31 +77,34 @@
                     </div>
                     
                 </div>
-				<!--Payment-->
+                <!--Payment-->
                 <div class="p-2 mb-4" style=" background-color: #dfdfdfe4; border-radius: 20px;">
                     <p class="mb-1"><strong>Payment</strong></p>
                     <div class="d-flex align-items-center rounded-pill p-3 mb-1"
                         style="height: 30px; background-color:#5ea7eb">
-                        <a href="/user/viewArrearsInterface?uid={{auth()->user()->id}}" style="text-decoration: none" class="mb-1 text-dark"><strong>View Arrears</strong></a>
+                        <a href="/user/viewArrearsInterface?uid={{ auth()->user()->id }}" style="text-decoration: none"
+                            class="mb-1 text-dark"><strong>View Arrears</strong></a>
                     </div>
                     <div class="d-flex align-items-center rounded-pill p-3 mb-1"
                         style="height: 30px; background-color:#5ea7eb">
-                        <a href="/user/searchReceiptById?type=uid&uid={{auth()->user()->id}}" style="text-decoration: none" class="mb-1 text-dark"><strong>View Receipt</strong></a>
+                        <a href="/user/searchReceiptById?type=uid&uid={{ auth()->user()->id }}"
+                            style="text-decoration: none" class="mb-1 text-dark"><strong>View Receipt</strong></a>
                     </div>
 
                 </div>
-				<!--Complaint-->
+                <!--Complaint-->
                 <div class="p-2 mb-4" style="height: 130px; background-color: #dfdfdfe4; border-radius: 20px;">
                     <p class="mb-1"><strong>Complaint</strong></p>
                     <div class="d-flex align-items-center rounded-pill p-3 mb-1"
                         style="height: 30px; background-color:#002171">
-                        <a href={{ '/staffRegistration' }} style="text-decoration: none" class="mb-1 text-light">Manage
+                        <a href='/user/addComplaintInterface' style="text-decoration: none" class="mb-1 text-light">Add
                             Complaint</a>
                     </div>
                     <div class="d-flex align-items-center rounded-pill p-3"
                         style="height: 30px; background-color:#5ea7eb">
-                        <a href="#" style="text-decoration: none" class="mb-1 text-dark"><strong>Work Order
-                                Details</strong></a>
+                        <a href='/user/complaintListInterface' style="text-decoration: none"
+                            class="mb-1 text-dark"><strong>Complaint
+                                History</strong></a>
                     </div>
                 </div>
 
@@ -114,8 +118,8 @@
             </main>
         </div>
     </div>
-	<script type="text/javascript" src="/js/jquery.js"></script>
-	<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.js"></script>
+    <script type="text/javascript" src="/js/bootstrap.min.js"></script>
 </body>
 
 </html>
