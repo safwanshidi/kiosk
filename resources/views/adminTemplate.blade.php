@@ -129,8 +129,9 @@
                         </div>
                         <div class="d-flex align-items-center rounded-pill p-3"
                             style="height: 30px; background-color:#5ea7eb">
-                            <a href="#" style="text-decoration: none" class="mb-1 text-dark"><strong>Manage Application
-                                    </strong></a>
+                             <a href="{{ route('manage-application') }}" style="text-decoration: none" class="mb-1 text-dark">
+                <strong>Manage Application</strong>
+            </a>
                         </div>
                     </div>
                     <div class="p-2" style="background-color: #dfdfdfe4; border-radius: 20px;">

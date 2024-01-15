@@ -10,9 +10,21 @@ use Illuminate\Http\Request;
 class UserController extends Controller
 {
     // Other methods...
+    public function show($id)
+    {
+        $user = User::find($id);
+        if ($user->role == 'STUDENT' || $user->role == 'VENDOR') {
+            return view('manageProfile.participantProfile', compact('user'));
+        }
+        return view('manageProfile.staffProfile', compact('user'));
+    }
+    
+
 
     public function submitApplyKiosk(Request $request)
     {
+        $operatingHours = $request->input('business_operating_hour');
+        $operatingHours = date('H:i:s', strtotime($operatingHours));
         // Validation rules
         $request->validate([
             // Add your validation rules here
@@ -20,7 +32,7 @@ class UserController extends Controller
 
         // Save data to the 'applications' table
         $application = new Application([
-            'user_id' => Auth::id(),
+            'id' => Auth::id(),
             'business_name' => $request->input('business_name'),
             'business_role' => $request->input('business_role'),
             'business_category' => $request->input('business_category'),

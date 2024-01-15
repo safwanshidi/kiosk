@@ -9,7 +9,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Kiosk Applications') }}</title>
 
     <!-- Fonts -->
     <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
@@ -34,62 +34,7 @@
 
     <!-- Page Wrapper -->
     <div id="wrapper">
-        <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-
-            <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-                <div class="sidebar-brand-icon rotate-n-0">
-                    <i class="fas fa-house"></i>
-                </div>
-                <div class="sidebar-brand-text mx-3 text-start">FK-KIOSK</div>
-            </a>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider my-0">
-
-            <!-- Nav Item - Dashboard -->
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('user.home') }}">
-                    <i class="fas fa-fw fa-user"></i>
-                    <span>{{ __('Profile') }}</span></a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('user.applyKiosk') }}">
-                    <i class="bi bi-shop-window"></i>
-                    <span>{{ __('Manage Kiosk') }}</span>
-                </a>
-            </li>
-            
-
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('user.reportList') }}">
-                    <i class="bi bi-file-earmark-bar-graph-fill"></i>
-                    <span>{{ __('Monthly Report') }}</span></a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('logout') }}" data-toggle="modal" data-target="#logoutModal"
-                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                    <i class="fas fa-fw  fa-sign-out"></i>
-                    <span>{{ __('Log Out') }}</span>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                        @csrf
-                    </form>
-                </a>
-            </li>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider d-none d-md-block">
-
-            <!-- Sidebar Toggler (Sidebar) -->
-            <div class="text-center d-none d-md-inline">
-                <button class="rounded-circle border-0" id="sidebarToggle"></button>
-            </div>
-
-        </ul>
-        <!-- End of Sidebar -->
+        
 
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
