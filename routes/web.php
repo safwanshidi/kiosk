@@ -159,6 +159,6 @@ Route::prefix('user')->name('user.')->group(function () {
 		Route::view('/complaintListInterface', 'manageComplaint.KioskParticipantManageComplaint.complaintListInterface')->name('complaintListInterface');
 		Route::get('/addComplaint', [App\Http\Controllers\ComplaintController::class, 'index'])->name('addComplaint.index');
 		Route::get('/manageComplaint/KioskParticipantManageComplaint/addComplaintInterface', [ComplaintController::class, 'addComplaintInterface'])->name('manageComplaint.KioskParticipantManageComplaint.addComplaintInterface');
-		Route::post('/manageComplaint/KioskParticipantManageComplaint', [ComplaintController::class, 'addComplaint'])->name('manageComplaint.KioskParticipantManageComplaint.addComplaint');
+		Route::post('/addComplaintInterface', [ComplaintController::class, 'addComplaintInterface'])->name('addComplaintInterface');
 	});
 });

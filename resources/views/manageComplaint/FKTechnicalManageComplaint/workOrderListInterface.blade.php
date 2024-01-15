@@ -19,7 +19,7 @@
         <form class="padding-content" {{-- action="/staff/{{ $role }}/viewArrearsInterface" --}}>
             <div class="px-5 invalid-comment">{{ $errors->first() }}</div>
             <div class="px-5 py-3 input-group">
-                <input class="form-control form-control-lg fs-6 " placeholder="Complaint ID" type="text" name="uid">
+                <input class="form-control form-control-lg fs-6 " placeholder="Work Order ID" type="text" name="uid">
                 <button class="btn-ligth-no-margin" type="submit" id="btnn"><img
                         src="/assets/Search_black.png">Search</button>
             </div>
@@ -34,7 +34,7 @@
                         <thead>
                             <tr>
                                 <th>Complaint Date</th>
-                                <th>Complaint ID</th>
+                                <th>Work Order ID</th>
                                 <th>Name</th>
                                 <th>IC No</th>
                                 <th>Damage Type</th>
