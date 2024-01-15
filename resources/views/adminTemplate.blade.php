@@ -19,8 +19,8 @@
 
     <!-- Scripts -->
     {{-- @vite(['resources/sass/app.scss', 'resources/js/app.js']) --}}
-	<script type="text/javascript" src="/js/jquery.js"></script>
-	<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.js"></script>
+    <script type="text/javascript" src="/js/bootstrap.min.js"></script>
 
     <header class="container-fluid d-flex justify-content-between align-items-center m-0"
         style="background-color: #5ea7eb;">
@@ -50,7 +50,8 @@
 
 <body>
     <div class="container-fluid"
-        style="height:100%; min-height: 100vh; font-family: 'Times New Roman', Times, serif; background-image: url('{{ asset('img/Background.jpg') }}'); background-size: cover;" id="background-img">
+        style="height:100%; min-height: 100vh; font-family: 'Times New Roman', Times, serif; background-image: url('{{ asset('img/Background.jpg') }}'); background-size: cover;"
+        id="background-img">
         <div class="row pt-5">
 
             <div class="col-1"></div>
@@ -83,17 +84,20 @@
                         <p class="mb-1"><strong>Payment</strong></p>
                         <div class="d-flex align-items-center rounded-pill p-3 mb-1"
                             style="height: 30px; background-color:#5ea7eb">
-                            <a href='/staff/admin/makePayment' style="text-decoration: none" class="mb-1 text-dark"><strong>Make
+                            <a href='/staff/admin/makePayment' style="text-decoration: none"
+                                class="mb-1 text-dark"><strong>Make
                                     Payment</strong></a>
                         </div>
                         <div class="d-flex align-items-center rounded-pill p-3 mb-1"
                             style="height: 30px; background-color:#5ea7eb">
-                            <a href="/staff/admin/viewArrearsInterface" style="text-decoration: none" class="mb-1 text-dark"><strong>View User
+                            <a href="/staff/admin/viewArrearsInterface" style="text-decoration: none"
+                                class="mb-1 text-dark"><strong>View User
                                     Arrears</strong></a>
                         </div>
                         <div class="d-flex align-items-center rounded-pill p-3 mb-1"
                             style="height: 30px; background-color:#5ea7eb">
-                            <a href="/staff/admin/viewRecentReceipt" style="text-decoration: none" class="mb-1 text-dark"><strong>View
+                            <a href="/staff/admin/viewRecentReceipt" style="text-decoration: none"
+                                class="mb-1 text-dark"><strong>View
                                     Receipt</strong></a>
                         </div>
                         <div class="d-flex align-items-center rounded-pill p-3 mb-1"
@@ -101,6 +105,16 @@
                             <a href="/staff/admin/setMontlyAmount" style="text-decoration: none; font-size: 14px"
                                 class="mb-1 text-dark"><strong>Set Montly Payment Amount</strong></a>
                         </div>
+                    </div>
+
+                    <div class="p-2 mt-4" style="background-color: #dfdfdfe4; border-radius: 20px;">
+                        <p class="mb-1"><strong>Manage Complaint</strong></p>
+                        <div class="d-flex align-items-center rounded-pill p-3 mb-1"
+                            style="height: 30px; background-color:#5ea7eb">
+                            <a href='/staff/admin/complaintListInterface' style="text-decoration: none"
+                                class="mb-1 text-dark"><strong>Complaint List</strong></a>
+                        </div>
+
                     </div>
                 @elseif (auth()->user()->role == 'PUPUK ADMIN')
                     {{-- Pupuk Admin Side Bar --}}
@@ -121,7 +135,8 @@
                         <p class="mb-1"><strong>Manage Complaint</strong></p>
                         <div class="d-flex align-items-center rounded-pill p-3 mb-1"
                             style="height: 30px; background-color:#5ea7eb">
-                            <a href='#' style="text-decoration: none" class="mb-1 text-dark"><strong>Complaints
+                            <a href='/staff/admin/complaintListInterface' style="text-decoration: none"
+                                class="mb-1 text-dark"><strong>Complaints
                                     List</strong></a>
                         </div>
                         <div class="d-flex align-items-center rounded-pill p-3 mb-1"
@@ -136,13 +151,15 @@
                         <p class="mb-1"><strong>Manage Complaint</strong></p>
                         <div class="d-flex align-items-center rounded-pill p-3 mb-1"
                             style="height: 30px; background-color:#5ea7eb">
-                            <a href='#' style="text-decoration: none" class="mb-1 text-dark"><strong>Manage
-                                    Complaint</strong></a>
+                            <a href='/staff/technical/complaintListInterface' style="text-decoration: none"
+                                class="mb-1 text-dark"><strong>
+                                    Complaint List</strong></a>
                         </div>
                         <div class="d-flex align-items-center rounded-pill p-3 mb-1"
                             style="height: 30px; background-color:#5ea7eb">
-                            <a href="#" style="text-decoration: none" class="mb-1 text-dark"><strong>Work Order
-                                    Details</strong></a>
+                            <a href='/staff/technical/workOrderListInterface' style="text-decoration: none"
+                                class="mb-1 text-dark"><strong>Work Order
+                                    List</strong></a>
                         </div>
                     </div>
                 @elseif (auth()->user()->role == 'FK BURSARY')
@@ -151,17 +168,20 @@
                         <p class="mb-1"><strong>Payment</strong></p>
                         <div class="d-flex align-items-center rounded-pill p-3 mb-1"
                             style="height: 30px; background-color:#5ea7eb; font-size: 14px">
-                            <a href='/staff/bursary/makePayment' style="text-decoration: none" class="mb-1 text-dark"><strong>Make
+                            <a href='/staff/bursary/makePayment' style="text-decoration: none"
+                                class="mb-1 text-dark"><strong>Make
                                     Payment</strong></a>
                         </div>
                         <div class="d-flex align-items-center rounded-pill p-3 mb-1"
                             style="height: 30px; background-color:#5ea7eb; font-size: 14px">
-                            <a href="/staff/bursary/viewArrearsInterface" style="text-decoration: none" class="mb-1 text-dark"><strong>View User
+                            <a href="/staff/bursary/viewArrearsInterface" style="text-decoration: none"
+                                class="mb-1 text-dark"><strong>View User
                                     Arrears</strong></a>
                         </div>
                         <div class="d-flex align-items-center rounded-pill p-3 mb-1"
                             style="height: 30px; background-color:#5ea7eb; font-size: 14px">
-                            <a href="/staff/bursary/viewRecentReceipt" style="text-decoration: none" class="mb-1 text-dark"><strong>View
+                            <a href="/staff/bursary/viewRecentReceipt" style="text-decoration: none"
+                                class="mb-1 text-dark"><strong>View
                                     Receipt</strong></a>
                         </div>
                         <div class="d-flex align-items-center rounded-pill p-3 mb-1"
