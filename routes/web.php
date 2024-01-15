@@ -7,6 +7,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware;
 use App\Http\Controllers\KioskController;
+use App\Http\Controllers\ComplaintController;
 
 Route::get('/manage-kiosk', [KioskController::class, 'showApplyKioskForm'])->name('manage-kiosk');
 Route::post('/apply-kiosk', [KioskController::class, 'applyKiosk'])->name('apply-kiosk');
@@ -43,16 +44,15 @@ Route::prefix('user')->name('user.')->group(function () {
 		Route::put('/profile/{id}/update',  [UserController::class, 'update'])->name('updateUserProfile');
 	});
 
-    Route::middleware(['auth'])->group(function () {
-        Route::get('/profile/{id}', [UserController::class, 'show'])->name('showUserProfile');
-        Route::view('/participantProfile', 'manageProfile.participantProfile')->name('participantProfile');
-        Route::put('/profile/{id}/update',  [UserController::class, 'update'])->name('updateUserProfile');
+	Route::middleware(['auth'])->group(function () {
+		Route::get('/profile/{id}', [UserController::class, 'show'])->name('showUserProfile');
+		Route::view('/participantProfile', 'manageProfile.participantProfile')->name('participantProfile');
+		Route::put('/profile/{id}/update',  [UserController::class, 'update'])->name('updateUserProfile');
 
-		 // New route for applying to Kiosk
+		// New route for applying to Kiosk
 		Route::get('/apply-kiosk', [UserController::class, 'applyKiosk'])->name('applyKiosk');
 		Route::post('/applyKiosk', [UserController::class, 'applyKiosk'])->name('user.applyKiosk');
-
-    });
+	});
 });
 
 
@@ -152,5 +152,8 @@ Route::prefix('user')->name('user.')->group(function () {
 	Route::middleware(['auth'])->group(function () {
 		Route::view('/addComplaintInterface', 'manageComplaint.KioskParticipantManageComplaint.addComplaintInterface')->name('addComplaintInterface');
 		Route::view('/complaintListInterface', 'manageComplaint.KioskParticipantManageComplaint.complaintListInterface')->name('complaintListInterface');
+		Route::get('/addComplaint', [App\Http\Controllers\ComplaintController::class, 'index'])->name('addComplaint.index');
+		Route::get('/manageComplaint/KioskParticipantManageComplaint/addComplaintInterface', [ComplaintController::class, 'addComplaintInterface'])->name('manageComplaint.KioskParticipantManageComplaint.addComplaintInterface');
+		Route::post('/manageComplaint/KioskParticipantManageComplaint', [ComplaintController::class, 'addComplaint'])->name('manageComplaint.KioskParticipantManageComplaint.addComplaint');
 	});
 });

@@ -17,11 +17,13 @@
                     </div>
 
                     <div>
-                        <form>
+                        <form method="post"
+                            action="{{ route('manageComplaint.KioskParticipantManageComplaint.addComplaint') }}">
                             @csrf
-
+                            @method('post')
                             <div class="form-group row mb-2">
-                                <label for="name" class="col-md-4 col-form-label text-md-right" style="font-weight: bold;">
+                                <label for="name" class="col-md-4 col-form-label text-md-right"
+                                    style="font-weight: bold;">
                                     {{ __('FULL NAME:') }}
                                 </label>
 

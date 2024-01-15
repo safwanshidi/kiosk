@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('complaint', function (Blueprint $table) {
-            $table->id('complaint_id');
+            $table->string('id', 255)->unique()->primary();
             $table->string('c_name', 255);
             $table->string('c_email', 255);
             $table->string('c_ic_num', 255);
@@ -20,6 +20,9 @@ return new class extends Migration
             $table->date('c_date', 255);
             $table->string('c_details', 255);
             $table->string('c_status', 255);
+            $table->foreignId('user_id')->references('id')->on('users')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
         });
     }
 
